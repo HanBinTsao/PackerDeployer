@@ -107,6 +107,7 @@ packer build -var-file credentials.json aws-packer-example.json
 ```
 
 output:
+
 ```powershell
 amazon-ebs output will be in this color.
 
