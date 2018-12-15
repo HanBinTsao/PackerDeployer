@@ -100,7 +100,8 @@ create file name call credentials.json
 }
 ```
 
-build packer image with variable file in powershell
+build packer image with variable file in powershell, 
+use `-var-file` option to hide secret file.
 
 ```powershell
 packer build -var-file credentials.json aws-packer-example.json
