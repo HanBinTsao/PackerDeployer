@@ -142,3 +142,27 @@ Build 'amazon-ebs' finished.
 --> amazon-ebs: AMIs were created:
 ap-northeast-1: ami-0bf2f2638f1dbcf5d
 ```
+
+add drone secret
+
+```shell
+drone secret add \
+  -repository hbtdocker/aws-packer-example \
+  -image appleboy/drone-packer \
+  -event push \
+  -name aws_access_key_id \
+  -value `YOUR SECRET HERE`
+```
+
+add drone secret with file
+
+```shell
+drone secret add \
+  --name ssh-key \
+  --value @./credentials.json \
+  --image appleboy/drone-ssh \
+  --repository packerdeployer
+```
+
+Packer with Ansible
+`docker-packer-builder.json` file
