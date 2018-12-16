@@ -2,14 +2,14 @@
     "variables": {
       "aws_access_key": "",
       "aws_secret_key": "",
-      "aws_region": "",
-      "builders_type": ""
+      "region": "",
+      "type": ""
     },
     "builders": [{
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
-      "region": "{{user `aws_region`}}",
-      "type": "{{user `builders_type`}}",
+      "region": "{{user `region`}}",
+      "type": "{{user `type`}}",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
