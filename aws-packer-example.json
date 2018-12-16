@@ -8,8 +8,8 @@
     "builders": [{
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
-      "region": "{{user `region`}}",
-      "type": "{{user `type`}}",
+      "region": "",
+      "type": "",
       "source_ami_filter": {
         "filters": {
           "virtualization-type": "hvm",
