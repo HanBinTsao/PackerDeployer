@@ -2,12 +2,13 @@
     "variables": {
       "aws_access_key": "",
       "aws_secret_key": "",
-      "region": "ap-northeast-1"
+      "region": "",
+      "builders_type": ""      
     },
     "builders": [{
-      "type": "amazon-ebs",
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
+      "type": "{{user `builders_type`",
       "region": "{{user `region`}}",
       "source_ami_filter": {
         "filters": {
