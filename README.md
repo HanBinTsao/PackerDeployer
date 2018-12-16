@@ -9,6 +9,10 @@ This builder builds an EBS-backed AMI by launching a source AMI, provisioning on
 
 ## Install packer
 
+### Linux
+
+Download binary file to your `/usr/local/bin`
+
 ### Windows
 
 use choco command by microsoft windows to install packer
