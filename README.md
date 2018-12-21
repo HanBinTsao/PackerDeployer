@@ -178,3 +178,21 @@ for example, find the windows ownerid
 ```bash
 aws ec2 describe-images --owners amazon --filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs" "Name=architecture,Values=x86_64" "Name=name,Values=*Windows_Server-2008"Name=name,Values=*Windows_Server-2008-SP2*English-64Bit-Base*" | jq -r '.Images[] | "\(.OwnerId)\t\(.Name)"'
 ```
+
+## add post process
+
+syntax reference
+
+```json
+    "variables": {...},
+    "builders": [{
+    "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 30",
+      "sudo apt-get update",
+      "sudo apt-get install -y redis-server"
+      ]}],
+     "post-processors": ["vagrant"]
+    }
+```
