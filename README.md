@@ -171,7 +171,6 @@ drone secret add \
 Packer with Ansible
 `docker-packer-builder.json` file
 
-
 ## How to find OwnerId in aws cli
 
 for example, find the windows ownerid
