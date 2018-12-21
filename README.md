@@ -53,7 +53,7 @@ Chocolatey installed 1/1 packages.
 
 Create new user to deploy, apply `aws_packer_policy.json` for new user.
 
-## Edit xxx.json file
+## Edit packer json file
 
 use an AWS credentials file to specify your credentials
 
