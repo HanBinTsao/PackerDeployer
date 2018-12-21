@@ -1,0 +1,11 @@
+pipeline:
+  packer:
+    image: appleboy/drone-packer
+    pull: true
+    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    template: aws-packer-example.json
+    actions:
+      - validate
+      - build
+    when:
+      branch: master
