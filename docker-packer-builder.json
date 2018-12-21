@@ -1,0 +1,37 @@
+{
+    "builders": [{
+      "type": "docker",
+      "image": "ubuntu:xenial",
+      "commit": true,
+      "pull": true,
+      "run_command": [ "-d", "-i", "-t", "-v", "/tmp:/tmp", "{{.Image}}", "/bin/bash" ]
+    }],
+  
+    "provisioners": [
+      {
+        "type": "shell",
+        "inline": [
+          "apt-get update",
+          "apt-get install -y software-properties-common",
+          "apt-add-repository -y ppa:ansible/ansible",
+          "apt-get update",
+          "apt-get install -y ansible"
+        ]
+      },
+      {
+        "type": "ansible-local",
+        "playbook_file": "./ansible.yml",
+        "role_paths": [ "./ansible" ]
+      }
+    ],
+  
+    "post-processors": [
+      [
+        {
+          "type": "docker-tag",
+          "repository": "your-dockerhub/image-name",
+          "tag": "{{user `image_tag`}}"
+        }
+      ]
+    ]
+  }
