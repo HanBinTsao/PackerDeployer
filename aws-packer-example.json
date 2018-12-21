@@ -21,5 +21,12 @@
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
       "ami_name": "aws-packer-example {{timestamp}}"
-    }]
-  }
+    }],
+    "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 30",
+      "sudo apt-get update",
+      "sudo apt-get install -y redis-server"
+      ]}]
+    }
