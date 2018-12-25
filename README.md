@@ -147,8 +147,6 @@ Build 'amazon-ebs' finished.
 ap-northeast-1: ami-0bf2f2638f1dbcf5d
 ```
 
-
-
 ## Drone CI
 
 add `drone.yml` file
@@ -175,6 +173,7 @@ drone secret add \
 ```
 
 ## Packer with Ansible
+
 `docker-packer-builder.json` file
 
 ## How to find OwnerId in aws cli
