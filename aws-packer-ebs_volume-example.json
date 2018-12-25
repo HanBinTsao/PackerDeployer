@@ -1,0 +1,48 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "region": "ap-northeast-1"
+    },
+    "builders": [{
+    "type" : "amazon-ebsvolume",
+    "secret_key" : "YOUR SECRET KEY HERE",
+    "access_key" : "YOUR KEY HERE",
+    "region" : "ap-northeast-1",
+    "ssh_username" : "ubuntu",
+    "instance_type" : "t2.micro",
+    "source_ami" : "YOUR AMI ID",
+    "ebs_volumes" : [
+      {
+        "volume_type" : "gp2",
+        "device_name" : "/dev/xvdf",
+        "delete_on_termination" : false,
+        "tags" : {
+          "zpool" : "data",
+          "Name" : "Data1"
+        },
+        "volume_size" : 10
+      },
+      {
+        "volume_type" : "gp2",
+        "device_name" : "/dev/xvdg",
+        "tags" : {
+          "zpool" : "data",
+          "Name" : "Data2"
+        },
+        "delete_on_termination" : false,
+        "volume_size" : 10
+      },
+      {
+        "volume_size" : 10,
+        "tags" : {
+          "Name" : "Data3",
+          "zpool" : "data"
+        },
+        "delete_on_termination" : false,
+        "device_name" : "/dev/xvdh",
+        "volume_type" : "gp2"
+      }
+    ]
+    }]
+}
