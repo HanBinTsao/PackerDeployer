@@ -147,6 +147,25 @@ Build 'amazon-ebs' finished.
 ap-northeast-1: ami-0bf2f2638f1dbcf5d
 ```
 
+## AWS block device mappings
+
+use file `aws-packer-block_device_mappings-example.json` to create tree 10 GB ebs volume.
+
+you can add tag with volume:
+
+```json
+"tags": {
+            "OS_Version": "Ubuntu",
+            "Release": "Latest",
+            "Base_AMI_Name": "{{ .SourceAMIName }}",
+            "Extra": "{{ .SourceAMITags.TagName }}"
+        },
+```
+
+## Packer with Ansible
+
+`docker-packer-builder.json` file
+
 ## Drone CI
 
 add `drone.yml` file
@@ -171,10 +190,6 @@ drone secret add \
   --image appleboy/drone-ssh \
   --repository packerdeployer
 ```
-
-## Packer with Ansible
-
-`docker-packer-builder.json` file
 
 ## How to find OwnerId in aws cli
 
