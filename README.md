@@ -104,7 +104,7 @@ create file name call credentials.json
 }
 ```
 
-build packer image with variable file in powershell,
+build packer image with variable file in shell,
 use `-var-file` option to hide secret file.
 
 ```powershell
@@ -147,7 +147,13 @@ Build 'amazon-ebs' finished.
 ap-northeast-1: ami-0bf2f2638f1dbcf5d
 ```
 
-add drone secret
+
+
+## Drone CI
+
+add `drone.yml` file
+
+### add drone secret
 
 ```shell
 drone secret add \
@@ -168,7 +174,7 @@ drone secret add \
   --repository packerdeployer
 ```
 
-Packer with Ansible
+## Packer with Ansible
 `docker-packer-builder.json` file
 
 ## How to find OwnerId in aws cli
@@ -178,6 +184,8 @@ for example, find the windows ownerid
 ```bash
 aws ec2 describe-images --owners amazon --filters "Name=platform,Values=windows" "Name=root-device-type,Values=ebs" "Name=architecture,Values=x86_64" "Name=name,Values=*Windows_Server-2008"Name=name,Values=*Windows_Server-2008-SP2*English-64Bit-Base*" | jq -r '.Images[] | "\(.OwnerId)\t\(.Name)"'
 ```
+
+for more info, refer [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html)
 
 ## add post process
 
@@ -195,4 +203,10 @@ syntax reference
       ]}],
      "post-processors": ["vagrant"]
     }
+```
+
+## clean up test instance
+
+```shell
+aws ec2 terminate-instances --instance-ids "YOUR INSTANCES ID"
 ```

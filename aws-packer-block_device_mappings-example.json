@@ -1,0 +1,45 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "region": "ap-northeast-1"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "access_key": "YOUR ACCESS KEY HERE",
+            "secret_key": "YOUR SECRET KEY HERE",
+            "region": "ap-northeast-1",
+            "source_ami": "ami-09256468cd84f189d",
+            "instance_type": "t2.micro",
+            "ssh_username": "ubuntu",
+            "ami_name": "packer-quick-start {{timestamp}}",
+            "tags": {
+                "OS_Version": "Ubuntu",
+                "Release": "Latest",
+                "Base_AMI_Name": "{{ .SourceAMIName }}",
+                "Extra": "{{ .SourceAMITags.TagName }}"
+            },
+            "launch_block_device_mappings": [
+            {
+                "device_name": "/dev/sda1",
+                "volume_size": 10,
+                "volume_type": "gp2",
+                "delete_on_termination": true
+            }
+            ],
+            "ami_block_device_mappings": [
+            {
+                "device_name": "/dev/sdb",
+                "virtual_name": "ephemeral0"
+            },
+            {
+                "device_name": "/dev/sdc",
+                "virtual_name": "ephemeral1"
+            }
+            ]
+        }
+    
+        ]
+    
+}
