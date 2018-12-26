@@ -147,6 +147,14 @@ Build 'amazon-ebs' finished.
 ap-northeast-1: ami-0bf2f2638f1dbcf5d
 ```
 
+### Verify packer build images
+
+```shell
+aws ec2 describe-images --image-ids ami-03d2fc6373990e64e
+```
+
+
+
 ## AWS block device mappings
 
 use file `aws-packer-block_device_mappings-example.json` to create tree 10 GB ebs volume.
@@ -161,6 +169,8 @@ you can add tag with volume:
             "Extra": "{{ .SourceAMITags.TagName }}"
         },
 ```
+
+
 
 ## Packer with Ansible
 
@@ -223,4 +233,6 @@ syntax reference
 
 ```shell
 aws ec2 terminate-instances --instance-ids "YOUR INSTANCES ID"
+aws ec2 deregister-image --image-id ami-0123456789
+aws ec2 delete-snapshot --snapshot-id snap-9876543210
 ```
