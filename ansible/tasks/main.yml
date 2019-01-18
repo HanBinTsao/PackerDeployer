@@ -1,0 +1,17 @@
+---
+# tasks
+- name: update apt cache
+  apt: update_cache=yes cache_valid_time=86400
+
+- name: install nginx
+  apt: 
+    name: nginx
+
+- name: copy web page
+  template:
+    src: root/var/www/html/index.html.j2
+    dest: /var/www/html/index.html
+
+- name: remove apt
+  command: >
+    rm -rf /var/lib/apt/lists/*
